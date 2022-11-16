@@ -1,10 +1,23 @@
-fetch('pokemon.json')
+/* fetch('pokemon.json')
     .then(function(response) {
         return response.json();
     })
     .then(function(data) {
         displayPokemonCards(data)
     });
+*/
+
+$(document).ready(function() {
+
+    $.get("https://uyghur.ai/course/data/pokemon.json", function(data, status) {
+        if (status == "success") {
+            displayPokemonCards(data);
+        } else {
+            alert('failed to load the pokemon.json, please contact administration.');
+        }
+    });
+
+});
 
 function displayPokemonCards(pokemonData) {
     let pokemonDiv = document.getElementById("pokemonContainer");
